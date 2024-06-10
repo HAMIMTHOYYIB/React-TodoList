@@ -1,97 +1,168 @@
-.main{
+/* Existing CSS */
+.main {
   margin: 0;
   padding: 0;
   display: flex;
-  height:540px;
+  height: 540px;
+  flex-direction: row;
 }
-.inputDiv{
+
+.inputDiv {
   display: flex;
   flex-direction: column;
-  width:30%;
+  width: 30%;
   align-items: center;
   margin: auto;
 }
-.listDiv{
-  width:70%;
+
+.listDiv {
+  width: 70%;
   background-color: rgb(62, 117, 102);
 }
-.heading{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  width:100%;
-  display: flex;justify-content: center;
+
+.heading {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.form{
-  width:300px;
-  height:200px;
+
+.form {
+  width: 300px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color:rgb(62, 117, 102);
-  border-radius:30px;
+  background-color: rgb(62, 117, 102);
 }
-.form input{
-  height:30px;
-  width:80%;
+
+.form input {
+  height: 30px;
+  width: 80%;
   background-color: rgb(133, 196, 179);
-  border:2px solid black;
-  border-radius:10px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border: 2px solid black;
+  border-radius: 10px;
 }
-.form button{
-  margin-top:10%;
-  height:40px;
-  width:50%;
-  border-radius:40px;
-  border:2px solid black;
+
+.form button {
+  margin-top: 10%;
+  height: 40px;
+  width: 50%;
+  border-radius: 40px;
+  border: 2px solid black;
 }
-.listDiv{
+
+.listDiv {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
-.todo , .completed{
-  border-radius:10px;
-  border:2px solid black;
-  width:48%;
-  margin:1%;
+
+.todo,
+.completed {
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 48%;
+  margin: 1%;
   display: flex;
   flex-direction: column;
 }
-.todo>h2,.completed>h2{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color:white;
-  color:darkslategray;
-  height:40px;
+
+.todo > h2,
+.completed > h2 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: white;
+  color: darkslategray;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin:25px;
+  margin: 25px;
 }
-ul{
+
+ul {
   list-style: none;
 }
-.list{
-  width:90%;
+
+.list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: white;
-  margin: 5px auto;
+  margin: 5px 0;
   border-radius: 10px;
-  border: 3px solid darkslategray;
+  border: 1px solid darkslategray;
 }
 
 .list p {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 0;
   flex-grow: 1;
 }
 
 .list button {
-  /* margin-left: 10px; */
-  border-radius: 15px;
+  margin-left: 10px;
+  border-radius: 10px;
   border: 1px solid darkslategray;
   background-color: rgb(133, 196, 179);
-  padding: 10px 10px;
+  padding: 5px 10px;
+}
+
+.completed li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 10px;
+  border: 1px solid darkslategray;
+}
+
+.completed li p {
+  margin: 0;
+}
+
+/* Media query for phone size */
+@media (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .inputDiv {
+    width: 100%;
+  }
+
+  .listDiv {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .todo,
+  .completed {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .form input {
+    width: 90%;
+  }
+
+  .form button {
+    width: 70%;
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list button {
+    margin: 10px 0 0 0;
+  }
 }
