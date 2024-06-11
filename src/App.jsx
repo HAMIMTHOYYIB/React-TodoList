@@ -5,6 +5,10 @@ function App() {
   const [todo, setTodo] = useState("");
   const [arr, setArr] = useState([]);
   const [deletedArr, setDelete] = useState([]);
+  const [edit,setEdit] = useState({
+    isEdit: false,
+    editVal: "",
+  });
 
   const addTask = () => {
     if (todo) {
@@ -20,12 +24,38 @@ function App() {
     });
     setArr(setarray);
   };
+  const editTask = (i) => {
+    setEdit({
+      isEdit:true,
+      editVal:arr[i],
+      editIndex:i,
+    })
+  };
+  const saveEdit = () =>{
+    let updated = [...arr]
+    updated[edit.editIndex] = edit.editVal
+    setArr(updated)
+    setEdit({isEdit:false,editIndex:0})
+  }
 
   return (
     <div className="main">
       <div className="inputDiv">
         <h1 className="heading">TODO</h1>
         <div className="form">
+          {edit.isEdit?(
+            <>
+          <input
+            type="text"
+            onChange={(e) => setEdit({...edit,editVal:e.target.value})}
+            value={edit.editVal}
+          ></input>
+          <button type="button" onClick={saveEdit}>
+            Save
+          </button>
+          </>
+          ): (
+            <>
           <input
             type="text"
             onChange={(e) => setTodo(e.target.value)}
@@ -34,6 +64,8 @@ function App() {
           <button type="button" onClick={addTask}>
             Add
           </button>
+          </>
+          )}
         </div>
       </div>
       <div className="listDiv">
@@ -46,7 +78,8 @@ function App() {
                 <>
                   <li key={i} className="list">
                     <p>{todo}</p>
-                    <button onClick={() => deleteTask(i)}></button>
+                    <button onClick={() => editTask(i)}>✏️</button>
+                    <button onClick={() => deleteTask(i)}>✓</button>
                   </li>
                 </>
               );
@@ -60,8 +93,7 @@ function App() {
               return (
                 <>
                   <li key={ind} className="list">
-                    <p>{del}</p>
-                    ✅
+                    <p>{del}</p>✅
                   </li>
                 </>
               );
